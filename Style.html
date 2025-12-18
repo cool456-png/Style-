@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crackers & Snow Glow</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #020024, #090979, #000);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== GLOWING LIGHTS ===== */
+.glow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #fff, 0 0 40px #ff0, 0 0 60px #0ff;
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* ===== CRACKERS (FIREWORKS) ===== */
+.cracker {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: transparent;
+  animation: explode 2s infinite ease-out;
+}
+
+.cracker::before,
+.cracker::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 30px;
+  background: linear-gradient(to top, transparent, #ff0, #f00);
+  top: -15px;
+  left: 2px;
+  transform-origin: bottom;
+}
+
+.cracker::after {
+  transform: rotate(90deg);
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* ===== SNOW FALL ===== */
+.snow {
+  position: absolute;
+  top: -10px;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(110vh);
+  }
+}
+
+  </style>
+</head>
+<body>  <!-- GLOW DOTS -->  <script>
+    for (let i = 0; i < 50; i++) {
+      const glow = document.createElement('div');
+      glow.className = 'glow';
